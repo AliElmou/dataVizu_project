@@ -15,6 +15,9 @@ def create_app():
     from app import app  # pylint: disable=import-outside-toplevel
     return app.server
 
+def create_wsgi_app():
+    '''Pour la production avec Gunicorn'''
+    return create_app()
 
 if __name__ == "__main__":
-    create_app().run(port="8050", debug=True)
+    create_app().run(port="8050", debug=False)
