@@ -16,6 +16,7 @@ app.title = 'Project | INF8808'
 
 # Load all processed data
 df_dic = preProcessData.preprocess_all()
+preProcessData.show_total_memory_usage(df_dic)
 
 sankey_df = df_dic["sankey"]
 sankey_fig = create_sankey(sankey_df)
@@ -106,5 +107,3 @@ def update_map(selected_year, selected_crimes):
 )
 def update_chart(time_unit):
     return create_interactive_hour_chart(lineChart_df, time_unit)
-
-
