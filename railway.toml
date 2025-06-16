@@ -1,1 +1,11 @@
-web: gunicorn --bind 0.0.0.0:$PORT --workers 2 --threads 2 server:create_wsgi_app
+[build]
+command = "pip install -r requirements.txt"  # Si nécessaire
+
+[deploy]
+start_command = "gunicorn --bind 0.0.0.0:$PORT --workers 2 --threads 2 server:create_wsgi_app"
+
+[env]
+WEB_CONCURRENCY = "2"
+WORKER_CLASS = "gthread"
+PORT = "8050"
+FLASK_ENV = "production"
